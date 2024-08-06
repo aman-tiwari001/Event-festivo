@@ -1,20 +1,20 @@
 const express = require('express');
 const {
-  listProperty,
   getUserDetails,
-  investInProperty,
   fundAccountWithTestDiam,
   setAccountDataOnChain,
   createTokenAssetOnChain,
   makePayment,
-  sendAssetToken
+  sendAssetToken,
+  listEvent,
+  purchaseEventTicket
 } = require('../controllers/userController');
 const userRouter = express.Router();
 
 userRouter
-  .post('/list-property', listProperty) 
+  .post('/list/event', listEvent) 
   .get('/details', getUserDetails)
-  .post('/invest/:propId', investInProperty)
+  .post('/purchase/ticket/:eventId', purchaseEventTicket)
   .get('/fund-account', fundAccountWithTestDiam)
   .post('/set-data', setAccountDataOnChain)
   .post('/create-asset', createTokenAssetOnChain)

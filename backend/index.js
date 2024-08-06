@@ -1,10 +1,10 @@
 const cors = require('cors');
 const express = require('express');
 const connectDB = require('./config/db.js');
-const authRouter = require('./routes/authRoute.js');
 const userRouter = require('./routes/userRoute.js');
+const authRouter = require('./routes/authRoute.js');
+const eventRouter = require('./routes/eventRoute.js');
 const authenticateUser = require('./middlewares/authenticateUser.js');
-const propertyRouter = require('./routes/propertyRoute.js');
 require('dotenv').config();
 
 const app = express();
@@ -30,7 +30,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/user', authenticateUser, userRouter);
 
 // Property Routes - Protected
-app.use('/api/property', authenticateUser, propertyRouter);
+app.use('/api/property', authenticateUser, eventRouter);
 
 // Start the server
 app.listen(PORT, () => {

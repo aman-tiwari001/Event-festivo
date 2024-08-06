@@ -1,28 +1,30 @@
 const DiamSdk = require('diamante-sdk-js');
 const axios = require('axios');
 const User = require('../models/userModel');
-const Property = require('../models/propertyModel');
+const Event = require('../models/eventModel');
 const server = new DiamSdk.Horizon.Server('https://diamtestnet.diamcircle.io');
 
-const listProperty = async (req, res) => {
+const listEvent = async (req, res) => {
   try {
     const {
       title,
       desc,
-      total_price,
+      ticket_price,
       images,
+      category,
       token_name,
-      no_of_tokens,
+      total_tickets,
       location
     } = req.body;
 
     if (
       !title ||
       !desc ||
-      !total_price ||
+      !ticket_price ||
       !images ||
+      !category ||
       !token_name ||
-      !no_of_tokens ||
+      !total_tickets ||
       !location
     ) {
       return res
@@ -33,11 +35,11 @@ const listProperty = async (req, res) => {
     // Create a token asset using diamante API
     const data = {
       token_name,
-      no_of_tokens
+      total_tickets
     };
     const token = req.headers.authorization;
     const newAssetResp = await fetch(
-      'https://diam-estate-server.vercel.app/api/user/create-asset',
+      'http://localhost:4000/api/user/create-asset',
       {
         method: 'POST',
         headers: {
@@ -48,37 +50,34 @@ const listProperty = async (req, res) => {
       }
     );
 
+    // Create property and save in database
+
     const owner = req.userId;
-    const property = new Property({
+    const property = new Event({
       title,
       desc,
-      location: JSON.parse(location),
-      total_price,
+      ticket_price,
       images,
       owner,
+      category,
       token_name,
-      no_of_tokens,
-      available_tokens: no_of_tokens
+      total_tickets,
+      location,
+      available_tickets: total_tickets
     });
 
-    if (property.investors.length > 0) {
-      const totalPercentageShared = property.investors.reduce(
-        (acc, investor) => acc + investor.share_per,
-        0
-      );
-      property.percentageLeft = 100 - totalPercentageShared;
-    }
     const savedProperty = await property.save();
 
+    // Putting the created event in the listings of the user
     const user = await User.findById(req.userId);
-    user.my_listings.push({ property: savedProperty._id });
+    user.my_listings.push(savedProperty._id);
     await user.save();
 
     res
       .status(200)
-      .json({ result: property, message: 'Property listed successfully' });
+      .json({ result: property, message: 'Event listed successfully' });
   } catch (error) {
-    console.error('Error listing new property');
+    console.error('Error listing new event');
     res.status(500).json({ error: error.message });
   }
 };
@@ -87,12 +86,12 @@ const getUserDetails = async (req, res) => {
   try {
     const user = await User.findById(req.userId)
       .populate({
-        path: 'my_investments.property',
-        model: 'Property'
+        path: 'my_bookings.event',
+        model: 'Event'
       })
       .populate({
-        path: 'my_listings.property',
-        model: 'Property'
+        path: 'my_listings',
+        model: 'Event'
       });
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
@@ -107,56 +106,57 @@ const getUserDetails = async (req, res) => {
   }
 };
 
-const investInProperty = async (req, res) => {
+const purchaseEventTicket = async (req, res) => {
   try {
-    const { propId } = req.params;
-    const { share_per, tokens_left } = req.body;
-    const property = await Property.findById(propId).populate('owner');
-    if (!property) {
-      return res.status(404).json({ error: 'Property not found' });
+    const { eventId } = req.params;
+    const { no_of_tickets } = req.body;
+    const event = await Event.findById(eventId).populate('owner');
+    if (!event) {
+      return res.status(404).json({ error: 'Event not found' });
     }
-    if (property.percentageLeft - share_per < 0) {
+    if (
+      no_of_tickets > event.total_tickets ||
+      no_of_tickets > event.available_tickets
+    ) {
       return res
         .status(400)
-        .json({ error: 'Investment exceeds available percentage.' });
+        .json({ error: `Only ${event.available_tickets} tickets are left!` });
     }
 
     const user = await User.findById(req.userId);
-
     const access_token = req.headers.authorization;
 
-    const sendTk = await fetch('https://diam-estate-server.vercel.app/api/user/send-token', {
+    const sendTk = await fetch('http://localhost:4000/api/user/send-token', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: access_token
       },
       body: JSON.stringify({
-        token_name: property.token_name,
-        no_of_tokens:
-          (property.no_of_tokens - tokens_left).toString() + '.0000000',
+        token_name: event.token_name,
+        no_of_tokens: no_of_tickets.toString() + '.0000000',
         receiverSecretKey: user.secret_key,
-        senderSecretKey: property.owner.distribution_secret_key
+        senderSecretKey: event.owner.distribution_secret_key
       })
     });
 
     const re = await sendTk.json();
 
-    return res.status(200).json({ data: re });
+    event.audience.push({
+      attendee: req.userId,
+      tickets_bought: no_of_tickets
+    });
+    event.available_tickets = -no_of_tickets;
+    await event.save();
+    user.my_bookings.push({ event: eventId, tickets_bought: no_of_tickets });
 
-    property.investors.push({ investor: req.userId, share_per });
-    property.percentageLeft -= share_per;
-    property.available_tokens = tokens_left;
-    await property.save();
-    user.my_investments.push({ property: propId, share_per });
     await user.save();
 
     res.status(200).json({
-      result: property,
-      message: 'Investment successful'
+      result: event,
+      message: 'Purchase successful'
     });
   } catch (error) {
-    console.error('Error investing in property:', error.message);
     res.status(500).json({ error: error.message });
   }
 };
@@ -199,10 +199,10 @@ const setAccountDataOnChain = async (req, res) => {
     transaction.sign(sourceKeys);
     const result = await server.submitTransaction(transaction);
     await server.submitTransaction(transaction);
-    // return res.status(200).json({
-    //   result,
-    //   message: `Data ${name} set to ${value} successfully`
-    // });
+    return res.status(200).json({
+      result,
+      message: `Data ${name} set to ${value} successfully`
+    });
   } catch (error) {
     console.error('Error setting account data on chain:', error);
     return res.status(500).json({ error: error.message });
@@ -212,20 +212,16 @@ const setAccountDataOnChain = async (req, res) => {
 const createTokenAssetOnChain = async (req, res) => {
   try {
     const { token_name, no_of_tokens } = req.body;
-    console.log(
-      'Creating token asset on chain:',
-      token_name,
-      no_of_tokens,
-      req.headers.authorization
-    );
+
     const user = await User.findById(req.userId);
     const issuingKeys = DiamSdk.Keypair.fromSecret(user.secret_key);
+
     // Create a distributor account
     const distributorKeypair = DiamSdk.Keypair.random();
-    console.log('dist:', distributorKeypair.publicKey());
     await axios.get(
       `${process.env.DIAM_FAUCET_URI}?addr=${distributorKeypair.publicKey()}`
     );
+
     user.distribution_address = distributorKeypair.publicKey();
     user.distribution_secret_key = distributorKeypair.secret();
     await user.save();
@@ -377,11 +373,11 @@ const sendAssetToken = async (req, res) => {
 };
 
 module.exports = {
-  listProperty,
+  listEvent,
   getUserDetails,
   makePayment,
   sendAssetToken,
-  investInProperty,
+  purchaseEventTicket,
   fundAccountWithTestDiam,
   setAccountDataOnChain,
   createTokenAssetOnChain
