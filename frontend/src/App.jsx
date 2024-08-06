@@ -14,6 +14,7 @@ import LoadingBar from 'react-top-loading-bar';
 import { useState } from 'react';
 import ListingPage2 from './components/ListingPage2';
 
+
 function App() {
 	const [progress, setProgress] = useState(0);
 	return (

@@ -50,11 +50,11 @@ const Events = ({ setProgress }) => {
   }, [eventsList, priceRange, category, searchTerm]);
 
   return (
-    <div>
-      <div className="flex flex-wrap mt-[90px] p-5 rounded-md shadow-md text-black">
+    <div className="bg-base-100 ">
+      <div className="flex mt-[90px] p-5 rounded-md shadow-md bg-base-100 text-black">
         {/* Price Range Filter */}
-        <div className="w-full sm:w-[25%] mb-4 sm:mb-0 sm:mr-4">
-          <label className="block mb-2">Price Range:</label>
+        <div className="w-full sm:w-[25%] text-white mb-4 sm:mb-0 sm:mr-4">
+          <label className="block text-white mb-2">Price Range:</label>
           <div className="flex items-center mt-2">
             <input
               type="range"
@@ -73,7 +73,7 @@ const Events = ({ setProgress }) => {
 
         {/* Category Filter */}
         <div className="w-full sm:w-[25%] mb-4 sm:mb-0 sm:mr-4">
-          <label className="block mb-2">Category:</label>
+          <label className="block text-white mb-2">Category:</label>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
@@ -90,7 +90,7 @@ const Events = ({ setProgress }) => {
 
         {/* Search Input */}
         <div className="w-full sm:w-[30%]">
-          <label className="block mb-2">Search:</label>
+          <label className="block text-white mb-2">Search:</label>
           <input
             type="text"
             value={searchTerm}
@@ -99,9 +99,14 @@ const Events = ({ setProgress }) => {
             className="w-full p-2 border border-gray-300 rounded-md text-primary bg-gray-100"
           />
         </div>
+      <div className="mr-10">
+        <label className="block text-white mb-2">Date:</label>
+        <input className="bg-white text-black rounded-lg p-1" type="date" name="" id="" />
+      </div>
       </div>
 
-      <div className="card-section justify-center sm:justify-between px-5 mt-5">
+
+      <div className="card-section justify-center bg-base-100 sm:justify-between px-5 mt-5">
         {filteredEvents.length === 0 ? (
           <p>No events found.</p>
         ) : (

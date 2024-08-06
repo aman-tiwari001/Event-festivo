@@ -17,7 +17,7 @@ function EventsCard({ events }) {
 							{events.title}
 						</h3>
 
-						<p className='text-black'>{events.ticket_price}</p>
+						<p className='text-black'>{events.ticket_price} Diams</p>
 					</div>
 					<div className='w-[30%] flex justify-center'>
 						<div

@@ -1,27 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { MdOutlineAddHomeWork } from 'react-icons/md';
-import { BsHouseDash } from 'react-icons/bs';
 import { FiLogOut } from 'react-icons/fi';
 import { RiAccountPinCircleLine } from 'react-icons/ri';
 import { Horizon } from 'diamante-sdk-js';
 import toast from 'react-hot-toast';
 import { fundAccountWithTestDiam } from '../apis/userApi';
+import { BsTicketPerforated } from "react-icons/bs";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { IoWalletOutline } from "react-icons/io5";
+import { FaBitcoin } from "react-icons/fa";
+
 
 const navbarItems = [
 	{
-		icon: <MdOutlineAddHomeWork className='text-lg md:text-[25px] z-50' />,
+		icon: <BsTicketPerforated className='text-lg md:text-[25px] z-50' />,
 		label: 'Buy',
 		link: '/',
 	},
 	{
-		icon: <BsHouseDash className='text-lg md:text-[25px] z-50' />,
-		label: 'Sell',
+		icon: <IoIosAddCircleOutline className='text-lg md:text-[25px] z-50' />,
+		label: 'List',
 		link: '/listing',
 	},
 	{
 		icon: <RiAccountPinCircleLine className='text-lg md:text-[25px] z-50' />,
-		label: 'Profile',
+		label: 'Account',
 		link: '/dashboard',
 	},
 ];
@@ -79,12 +82,12 @@ function Navbar({ setProgress }) {
 					<Link to='/'>
 						<div className='flex items-center'>
 							<img
-								src='/dslogo.png'
+								src='/eflogo.png'
 								alt='logo'
 								className='object-cover'
-								width={100}
+								width={70}
 							/>
-							<h2 className='text-lg md:text-[25px] font-bold text-[#7065F0] ml-2 md:ml-4 hidden md:block overflow-hidden'>
+							<h2 className='text-lg md:text-[25px] font-bold shadow-xl text-[#7065F0] ml-2 md:ml-4 hidden md:block overflow-hidden'>
 							EventÓfestivo
 							</h2>
 						</div>
@@ -96,7 +99,7 @@ function Navbar({ setProgress }) {
 								<div
 									key={index}
 									onClick={() => handleItemClick(item.label)}
-									className={`relative flex items-center gap-2 text-black md:px-4 md:py-2 bg-transparent hover:bg-[#d7d4fc] hover:p-2 md:hover:px-4 md:hover:py-3 hover:rounded-[10px] hover:text-[#6559f1] transition-all cursor-pointer ${
+									className={`relative flex items-center gap-2 text-white md:px-4 md:py-2 bg-transparent hover:bg-[#d7d4fc] hover:p-2 md:hover:px-4 md:hover:py-3 hover:rounded-[10px] hover:text-[#6559f1] transition-all cursor-pointer ${
 										(item.label === 'Buy' || item.label === 'Sell') &&
 										selected === item.label
 											? 'bg-[#d7d4fc] p-2 md:px-4 md:py-3 rounded-[10px] text-[#6559f1] transition-all'
@@ -112,7 +115,7 @@ function Navbar({ setProgress }) {
 						</div>
 					</div>
 
-					<div className='text-black flex-col rounded-2xl p-1'>
+					<div className='text-black flex rounded-2xl gap-x-2 p-1'>
 						{publicAddress && (
 							<div
 								onClick={() => {
@@ -124,22 +127,24 @@ function Navbar({ setProgress }) {
 										},
 									});
 								}}
-								className='cursor-pointer border-1 bg-gray-300 rounded-lg'
+								className='cursor-pointer border-1 flex items-center p-1 bg-gray-300 rounded-lg'
 							>
+								<IoWalletOutline size={36} />
+
 								{publicAddress.slice(0, 5) +
 									'...' +
 									publicAddress.slice(addressLen - 5)}
 							</div>
 						)}
 
-						<div className='flex items-center  border-1 bg-gray-300 rounded-md '>
-							<img src='/diam.png' width={15} alt='' />
-							<p>{balance} DIAMS</p>
+						<div className='flex items-center border-1 p-1 gap-x-2 bg-gray-300 rounded-md '>
+							<img src='/diam.png' width={45} alt='' />
+							<p>{Number.parseFloat(balance).toFixed(2)} DIAMS</p>
 						</div>
 					</div>
 					<div onClick={handleFundAcc} className='flex gap-3 items-center ml-2'>
 						<div className='relative flex items-center gap-2 text-white md:px-4 md:py-3 bg-green-500 hover:bg-green-700 hover:p-2 md:hover:px-4 md:hover:py-3 rounded-[10px] transition-all cursor-pointer'>
-							<h2 className='font-bold hidden md:block'>💰 Fund</h2>
+							<h2 className='font-bold hidden md:block'><FaBitcoin size={36} /> Fund</h2>
 						</div>
 					</div>
 
