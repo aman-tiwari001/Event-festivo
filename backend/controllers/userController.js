@@ -146,7 +146,7 @@ const purchaseEventTicket = async (req, res) => {
       attendee: req.userId,
       tickets_bought: no_of_tickets
     });
-    event.available_tickets = -no_of_tickets;
+    event.available_tickets -= no_of_tickets;
     await event.save();
     user.my_bookings.push({ event: eventId, tickets_bought: no_of_tickets });
 

@@ -12,8 +12,8 @@ export const getAllEvents = async () => {
   return response;
 };
 
-export const getSingleProperty = async (id) => {
-  const response = await axios.get(`${server_url}/property/get/${id}`, {
+export const getSingleEvent = async (id) => {
+  const response = await axios.get(`${server_url}/events/get/${id}`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("access_token")}`,

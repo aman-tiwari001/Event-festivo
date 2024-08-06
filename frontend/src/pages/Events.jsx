@@ -77,7 +77,7 @@ const Events = ({ setProgress }) => {
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-2 border border-gray-300 rounded-md bg-gray-100"
           >
             <option value="">All</option>
             <option value="Movie">Movie</option>
@@ -96,7 +96,7 @@ const Events = ({ setProgress }) => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search..."
-            className="w-full p-2 border border-gray-300 rounded-md text-white"
+            className="w-full p-2 border border-gray-300 rounded-md text-primary bg-gray-100"
           />
         </div>
       </div>
