@@ -2,8 +2,8 @@ import axios from "axios";
 import { server_url } from "../config";
 
 
-export const getAllProperty = async () => {
-  const response = await axios.get(`${server_url}/property/get-all`, {
+export const getAllEvents = async () => {
+  const response = await axios.get(`${server_url}/events/get-all`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("access_token")}`,

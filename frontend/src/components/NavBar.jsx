@@ -112,7 +112,7 @@ function Navbar({ setProgress }) {
 						</div>
 					</div>
 
-					<div className='text-black flex gap-x-2 border-2 bg-gray-900 border-black rounded-full p-1'>
+					<div className='text-black flex-col rounded-2xl p-1'>
 						{publicAddress && (
 							<div
 								onClick={() => {
@@ -124,7 +124,7 @@ function Navbar({ setProgress }) {
 										},
 									});
 								}}
-								className='cursor-pointer border-1 bg-gray-300 rounded-full p-2'
+								className='cursor-pointer border-1 bg-gray-300 rounded-lg'
 							>
 								{publicAddress.slice(0, 5) +
 									'...' +
@@ -132,8 +132,8 @@ function Navbar({ setProgress }) {
 							</div>
 						)}
 
-						<div className='flex items-center gap-2 border-1 bg-gray-300 rounded-full p-2'>
-							<img src='/diam.png' width={50} alt='' />
+						<div className='flex items-center  border-1 bg-gray-300 rounded-md '>
+							<img src='/diam.png' width={15} alt='' />
 							<p>{balance} DIAMS</p>
 						</div>
 					</div>

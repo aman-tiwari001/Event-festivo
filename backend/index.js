@@ -29,8 +29,8 @@ app.use('/api/auth', authRouter);
 // User Routes - Protected
 app.use('/api/user', authenticateUser, userRouter);
 
-// Property Routes - Protected
-app.use('/api/event', authenticateUser, eventRouter);
+// Events Routes - Protected
+app.use('/api/events', authenticateUser, eventRouter);
 
 // Start the server
 app.listen(PORT, () => {

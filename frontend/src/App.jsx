@@ -12,6 +12,7 @@ import { Toaster } from 'react-hot-toast';
 import SignUp from './pages/SignUp';
 import LoadingBar from 'react-top-loading-bar';
 import { useState } from 'react';
+import ListingPage2 from './components/ListingPage2';
 
 function App() {
 	const [progress, setProgress] = useState(0);
@@ -31,7 +32,7 @@ function App() {
 					<Routes>
 						<Route
 							path='/listing'
-							element={<ListingPage setProgress={setProgress} />}
+							element={<ListingPage2 setProgress={setProgress} />}
 						/>
 						<Route
 							path='/buy/:id'
