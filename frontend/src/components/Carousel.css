@@ -1,0 +1,13 @@
+/* carousel.css */
+.slick-prev:before,
+.slick-next:before {
+  color: #fff;
+}
+
+.slick-dots li button:before {
+  color: #fff;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #3490dc; /* Change to your preferred active dot color */
+}
