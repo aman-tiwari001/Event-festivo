@@ -72,16 +72,16 @@ function LoginPage({ setProgress }) {
 			>
 				<source src='/login_bg.mp4' type='video/mp4' />
 			</video>
-			<div className='absolute top-0 left-0 w-full h-full bg-[#00000070]'></div>
-			<div className='relative z-10 bg-white p-8 rounded-lg shadow-md w-[90%] max-w-md'>
-				<h2 className='text-2xl font-bold mb-4 text-black text-center'>
+			<div className='absolute top-0 left-0 w-full h-full backdrop-blur-sm bg-[#00000032]'></div>
+			<div className='relative z-10 bg-[#0000009e] backdrop-blur-lg border-[1px] border-slate-700 p-8 rounded-lg shadow-md w-[90%] max-w-md'>
+				<h2 className='text-2xl font-bold mb-4 text-white text-center'>
 					Welcome to <span className='text-[#7065F0]'>EventÓfestivo</span>
 				</h2>
 				<form onSubmit={handleLogin}>
 					<div className='mb-4 mt-4'>
 						<label
 							htmlFor='username'
-							className='block text-sm font-medium text-gray-700'
+							className='block text-sm font-medium text-white'
 						>
 							Username
 						</label>
@@ -96,7 +96,7 @@ function LoginPage({ setProgress }) {
 					<div className='mb-4 mt-4'>
 						<label
 							htmlFor='secret_key'
-							className='block text-sm font-medium text-gray-700'
+							className='block text-sm font-medium text-white'
 						>
 							Secret Key
 						</label>
@@ -117,7 +117,7 @@ function LoginPage({ setProgress }) {
 					>
 						Login
 					</button>
-					<p className='text-gray-600'>
+					<p className='text-white'>
 						Not a user?{' '}
 						<Link to='/signup'>
 							<span className='text-indigo-700'>Sign Up</span>
@@ -125,7 +125,7 @@ function LoginPage({ setProgress }) {
 					</p>
 				</form>
 				<hr className='bg-gray-900 my-3' />
-				<p className='text-center text-gray-700'>OR</p>
+				<p className='text-center text-white'>OR</p>
 				<button
 					className='
 					w-full
