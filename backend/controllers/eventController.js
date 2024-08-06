@@ -22,15 +22,15 @@ const getSingleEvent = async (req, res) => {
     if (!id) {
       return res.status(400).json({ error: 'Event ID is required' });
     }
-    const Event = await Event.findById(id)
+    const event = await Event.findById(id)
       .populate('owner')
       .populate('audience.attendee');
-    if (!Event) {
+    if (!event) {
       return res.status(404).json({ error: 'Event not found' });
     }
 
     res.status(200).json({
-      result: Event,
+      result: event,
       message: 'Event fetched successfully'
     });
   } catch (error) {

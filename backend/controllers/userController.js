@@ -136,7 +136,7 @@ const purchaseEventTicket = async (req, res) => {
         token_name: event.token_name,
         no_of_tokens: no_of_tickets.toString() + '.0000000',
         receiverSecretKey: user.secret_key,
-        senderSecretKey: event.owner.distribution_secret_key
+        // senderSecretKey: event.owner.distribution_secret_key
       })
     });
 
@@ -326,10 +326,11 @@ const makePayment = async (req, res) => {
 const sendAssetToken = async (req, res) => {
   try {
     console.log('Sending asset token on chain:', req.body);
-    const { receiverSecretKey, senderSecretKey, token_name, no_of_tokens } =
+    const { receiverSecretKey, token_name, no_of_tokens } =
       req.body;
+    const user = await User.findById(req.userId);
     const receiverKeys = DiamSdk.Keypair.fromSecret(receiverSecretKey);
-    const senderKeys = DiamSdk.Keypair.fromSecret(senderSecretKey);
+    const senderKeys = DiamSdk.Keypair.fromSecret(user.secret_key);
     const account = await server.loadAccount(receiverKeys.publicKey());
     const account2 = await server.loadAccount(senderKeys.publicKey());
     const asset = new DiamSdk.Asset(token_name, senderKeys.publicKey());
