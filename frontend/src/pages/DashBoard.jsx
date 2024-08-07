@@ -54,7 +54,7 @@ function DashBoard({ setProgress }) {
       {!loading && (
         <div className="p-6 h-[100vh] bg-white overflow-auto">
           <h1 className="text-2xl font-bold mb-4 text-[#00B29F]">
-            <p className="text-white">
+            <p className="text-black">
               Hello,{" "}
               <span className="text-[#00B29F]">{user.username || "Guest"}</span>
             </p>
@@ -63,7 +63,7 @@ function DashBoard({ setProgress }) {
             <button
               className={`py-2 px-4 ${
                 activeTab === "My Bookings"
-                  ? "bg-[#00B29F] text-white rounded-[6px]"
+                  ? "bg-gradient-to-l from-purple-700 to-pink-500  text-white rounded-[6px]"
                   : "bg-[#9c9c9c] text-white rounded-[6px]"
               }`}
               onClick={() => handleTabClick("My Bookings")}
@@ -73,7 +73,7 @@ function DashBoard({ setProgress }) {
             <button
               className={`py-2 px-4 ${
                 activeTab === "My Listings"
-                  ? "bg-[#00B29F] text-white rounded-[6px]"
+                  ? "bg-gradient-to-l from-purple-700 to-pink-500  text-white rounded-[6px]"
                   : "bg-[#9c9c9c] text-white rounded-[6px]"
               }`}
               onClick={() => handleTabClick("My Listings")}
@@ -83,7 +83,7 @@ function DashBoard({ setProgress }) {
             <button
               className={`py-2 px-4 ${
                 activeTab === "My Transactions"
-                  ? "bg-[#00B29F] text-white rounded-[6px]"
+                  ? "bg-gradient-to-l from-purple-700 to-pink-500  text-white rounded-[6px]"
                   : "bg-[#9c9c9c] text-white rounded-[6px]"
               }`}
               onClick={() => handleTabClick("My Transactions")}
