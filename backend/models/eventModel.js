@@ -29,6 +29,7 @@ const eventSchema = new mongoose.Schema({
       tickets_bought: { type: Number, default: 0 }
     }
   ],
+  date_time: { type: Date, required: true },
   listed_at: { type: Date, default: Date.now }
 });
 

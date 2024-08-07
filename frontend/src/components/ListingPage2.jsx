@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './ListingPage.css';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const ListingPage2 = () => {
 	const [formData, setFormData] = useState({
@@ -18,12 +19,15 @@ const ListingPage2 = () => {
 			state: '',
 			country: '',
 		},
+		date_time: '',
 	});
 	const [previewImage, setPreviewImage] = useState([]);
 	const [charCount, setCharCount] = useState(0);
+  const navigate = useNavigate();
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
+    console.log(name, value);
 		if (name.startsWith('location.')) {
 			const locationField = name.split('.')[1];
 			setFormData({
@@ -204,14 +208,29 @@ const ListingPage2 = () => {
 					</div>
 				</div>
 				<div className='form-group'>
-					<label>Total Tickets 🎫</label>
-					<input
-						type='number'
-						name='total_tickets'
-						value={formData.total_tickets}
-						onChange={handleChange}
-						required
-					/>
+					<div className='flex w-full gap-2 items-center'>
+						<div className='w-full flex-col flex'>
+							<label>Total Tickets 🎫</label>
+							<input
+								type='number'
+								name='total_tickets'
+								value={formData.total_tickets}
+								onChange={handleChange}
+								required
+							/>
+						</div>
+						<div className='w-full flex-col flex'>
+							<label>Date & Time 📆</label>
+							<input
+								type='datetime-local'
+								name='date_time'
+								value={formData.date_time}
+								onChange={handleChange}
+								required
+								className='w-full'
+							/>
+						</div>
+					</div>
 				</div>
 				<div className='form-group w-full'>
 					<label>Location 🌎</label>
@@ -243,7 +262,7 @@ const ListingPage2 = () => {
 							value={formData.location.state}
 							onChange={handleChange}
 							required
-              className='w-full'
+							className='w-full'
 						/>
 						<input
 							type='text'
@@ -252,7 +271,7 @@ const ListingPage2 = () => {
 							value={formData.location.country}
 							onChange={handleChange}
 							required
-              className='w-full'
+							className='w-full'
 						/>
 					</div>
 				</div>

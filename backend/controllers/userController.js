@@ -14,7 +14,8 @@ const listEvent = async (req, res) => {
       category,
       token_name,
       total_tickets,
-      location
+      location,
+      date_time
     } = req.body;
 
     if (
@@ -25,7 +26,8 @@ const listEvent = async (req, res) => {
       !category ||
       !token_name ||
       !total_tickets ||
-      !location
+      !location ||
+      !date_time
     ) {
       return res
         .status(400)
@@ -63,6 +65,7 @@ const listEvent = async (req, res) => {
       token_name,
       total_tickets,
       location,
+      date_time,
       available_tickets: total_tickets
     });
 
