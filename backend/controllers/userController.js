@@ -50,10 +50,10 @@ const listEvent = async (req, res) => {
       }
     );
 
-    // Create property and save in database
+    // Create event and save in database
 
     const owner = req.userId;
-    const property = new Event({
+    const event = new Event({
       title,
       desc,
       ticket_price,
@@ -66,16 +66,16 @@ const listEvent = async (req, res) => {
       available_tickets: total_tickets
     });
 
-    const savedProperty = await property.save();
+    const savedEvent = await event.save();
 
     // Putting the created event in the listings of the user
     const user = await User.findById(req.userId);
-    user.my_listings.push(savedProperty._id);
+    user.my_listings.push(savedEvent._id);
     await user.save();
 
     res
       .status(200)
-      .json({ result: property, message: 'Event listed successfully' });
+      .json({ result: event, message: 'Event listed successfully' });
   } catch (error) {
     console.error('Error listing new event');
     res.status(500).json({ error: error.message });

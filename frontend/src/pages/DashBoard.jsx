@@ -99,8 +99,8 @@ function DashBoard({ setProgress }) {
                     <MyInvestment
                       key={bookings.event._id}
                       src={bookings.event.images[0]}
-                      propertyName={bookings.event.title}
-                      propertyAddress={bookings.event.location.address}
+                      eventName={bookings.event.title}
+                      eventAddress={bookings.event.location.address}
                       share_per={bookings.tickets_bought}
                       total_price={bookings.event.ticket_price}
                     />
@@ -116,9 +116,9 @@ function DashBoard({ setProgress }) {
                     <Listings
                       key={events._id}
                       src={events.images[0]}
-                      propertyName={events.title}
-                      propertyAddress={events.location.address}
-                      percentageLeft={(events.available_tickets)}
+                      eventName={events.title}
+                      eventAddress={events.location.address}
+                      percentageLeft={events.available_tickets}
                       total_price={events.ticket_price}
                     />
                   </Link>

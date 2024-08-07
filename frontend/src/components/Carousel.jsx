@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./Carousel.css"; 
+import "./Carousel.css";
 
 const Carousel = ({ events }) => {
   const settings = {
@@ -23,7 +23,7 @@ const Carousel = ({ events }) => {
           <div key={index} className="relative h-[50vh] rounded-2xl">
             <img
               src={image}
-              alt={`Property Image ${index + 1}`}
+              alt={`Event Image ${index + 1}`}
               className="w-full h-[100%] overflow-y-hidden object-cover"
             />
           </div>
@@ -32,9 +32,7 @@ const Carousel = ({ events }) => {
       <div className="rounded-3xl m-2 p-4 text-slate-700 overflow-hidden h-[40vh]">
         <h2 className="text-2xl font-bold">{events.title}</h2>
         <div className="overflow-scroll p-2 h-[30vh] ">
-          <p className="text-lg font-light h-[90%] p-2 ">
-            {events.desc}
-          </p>
+          <p className="text-lg font-light h-[90%] p-2 ">{events.desc}</p>
         </div>
       </div>
     </div>
