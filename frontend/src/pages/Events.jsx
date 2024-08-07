@@ -51,7 +51,7 @@ const Events = ({ setProgress }) => {
 
   return (
     <div className="bg-base-100 ">
-      <div className="flex mt-[90px] p-5 rounded-md shadow-md bg-base-100 text-black">
+      <div className="flex flex-wrap mt-[90px] p-5 rounded-md shadow-md text-black items-center">
         {/* Price Range Filter */}
         <div className="w-full sm:w-[25%] text-white mb-4 sm:mb-0 sm:mr-4">
           <label className="block text-white mb-2">Price Range:</label>
@@ -89,7 +89,7 @@ const Events = ({ setProgress }) => {
         </div>
 
         {/* Search Input */}
-        <div className="w-full sm:w-[30%]">
+        <div className="w-full sm:w-[20%]">
           <label className="block text-white mb-2">Search:</label>
           <input
             type="text"
@@ -99,12 +99,16 @@ const Events = ({ setProgress }) => {
             className="w-full p-2 border border-gray-300 rounded-md text-primary bg-gray-100"
           />
         </div>
-      <div className="mr-10">
-        <label className="block text-white mb-2">Date:</label>
-        <input className="bg-white text-black rounded-lg p-1" type="date" name="" id="" />
+        <div className="w-full sm:w-[25%] mb-4 sm:mb-0 sm:ml-4">
+          <label className="block text-white mb-2">Date:</label>
+          <input
+            className="bg-white text-black rounded-lg p-2"
+            type="date"
+            name=""
+            id=""
+          />
+        </div>
       </div>
-      </div>
-
 
       <div className="card-section justify-center bg-base-100 sm:justify-between px-5 mt-5">
         {filteredEvents.length === 0 ? (
