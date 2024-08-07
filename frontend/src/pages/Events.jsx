@@ -51,7 +51,7 @@ const Events = ({ setProgress }) => {
 
   return (
     <div className="bg-base-100 ">
-      <div className="flex mt-[90px] p-5 rounded-md shadow-md bg-base-100 text-black">
+      <div className="flex mt-[90px] p-5 rounded-md shadow-md bg-base-200 text-black">
         {/* Price Range Filter */}
         <div className="w-full sm:w-[25%] text-white mb-4 sm:mb-0 sm:mr-4">
           <label className="block text-white mb-2">Price Range:</label>

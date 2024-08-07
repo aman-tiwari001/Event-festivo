@@ -13,6 +13,7 @@ import SignUp from './pages/SignUp';
 import LoadingBar from 'react-top-loading-bar';
 import { useState } from 'react';
 import ListingPage2 from './components/ListingPage2';
+import CollapsibleSidebar from './components/CollapsibleSidebar';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
 	return (
 		<>
 			<BrowserRouter>
+			<CollapsibleSidebar />
 				<LoadingBar
 					color='#3120e2'
 					height={4}
