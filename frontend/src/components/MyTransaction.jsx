@@ -2,8 +2,8 @@ import React from "react";
 
 function Transaction({
   src,
-  propertyName,
-  propertyAddress,
+  eventName,
+  eventAddress,
   amount,
   transactionType,
   tokens,
@@ -12,17 +12,13 @@ function Transaction({
     <div className="flex flex-col md:flex-row justify-between items-center md:items-start bg-white p-6 rounded-lg shadow-md">
       <div className="w-full md:w-1/4 mb-4 md:mb-0 h-48 md:h-48 flex-shrink-0">
         <div className="w-full h-full overflow-hidden rounded-lg">
-          <img
-            className="w-full h-full object-cover"
-            src={src}
-            alt="Property"
-          />
+          <img className="w-full h-full object-cover" src={src} alt="Event" />
         </div>
       </div>
 
       <div className="w-full md:w-1/3 mb-4 md:mb-0 text-center md:text-left md:flex md:flex-col justify-evenly md:h-48">
-        <h2 className="text-3xl font-semibold mb-2">{propertyName}</h2>
-        <h3 className="text-gray-600 text-lg">{propertyAddress}</h3>
+        <h2 className="text-3xl font-semibold mb-2">{eventName}</h2>
+        <h3 className="text-gray-600 text-lg">{eventAddress}</h3>
       </div>
 
       <div className="w-full md:w-1/4 text-center md:text-right md:flex md:flex-col justify-evenly md:h-48">

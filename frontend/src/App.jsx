@@ -14,6 +14,7 @@ import LoadingBar from 'react-top-loading-bar';
 import { useState } from 'react';
 import ListingPage2 from './components/ListingPage2';
 import CollapsibleSidebar from './components/CollapsibleSidebar';
+import Navbar1 from './components/NavBar1';
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
 					progress={progress}
 					onLoaderFinished={() => setProgress(0)}
 				/>
-				<Navbar setProgress={setProgress}/>
+				<Navbar1 setProgress={setProgress}/>
 				<div className='main'>
 					<Toaster />
 					<Routes>

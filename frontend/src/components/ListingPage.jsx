@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { listProperty } from "../apis/userApi";
+import { listEvent } from "../apis/userApi";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -43,14 +43,13 @@ const ListingPage = () => {
       toast.error("Total price must be greater than 0.");
       return;
     }
-  
+
     if (noOfTokens <= 0) {
       toast.error("Number of tokens must be greater than 0.");
       return;
     }
-  
 
-    const propertyData = {
+    const eventData = {
       title,
       desc,
       total_price: totalPrice,
@@ -61,10 +60,10 @@ const ListingPage = () => {
     };
 
     try {
-      const response = await listProperty(propertyData);
-      if(response.status === 200) {
-        toast.success("Property listed successfully");
-        navigate("/")
+      const response = await listEvent(eventData);
+      if (response.status === 200) {
+        toast.success("Event listed successfully");
+        navigate("/");
       }
     } catch (error) {
       toast.error(error);
@@ -127,9 +126,14 @@ const ListingPage = () => {
             className="mt-1 block w-full  shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             required
           />
-            <div className="mt-2 grid grid-cols-3 gap-2">
+          <div className="mt-2 grid grid-cols-3 gap-2">
             {images.map((image, index) => (
-              <img key={index} src={image} alt={`preview ${index}`} className="w-full h-auto rounded-lg" />
+              <img
+                key={index}
+                src={image}
+                alt={`preview ${index}`}
+                className="w-full h-auto rounded-lg"
+              />
             ))}
           </div>
         </div>

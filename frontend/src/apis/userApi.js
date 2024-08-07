@@ -4,10 +4,10 @@ import toast from "react-hot-toast";
 
 const public_address = localStorage.getItem("public_address");
 
-export const listProperty = async (propertyData) => {
+export const listEvent = async (eventData) => {
   const response = await axios.post(
-    `${server_url}/user/list-property`,
-    propertyData,
+    `${server_url}/user/list-event`,
+    eventData,
     {
       headers: {
         "Content-Type": "application/json",
