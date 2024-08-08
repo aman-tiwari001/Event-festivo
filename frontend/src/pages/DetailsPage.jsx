@@ -67,28 +67,34 @@ const DetailsPage = ({ setProgress }) => {
 
       <div className="bg-gradient-to-r from-slate-200 to-stone-300 w-full md:w-[45vw] h-min rounded-2xl flex flex-col p-2 shadow-md">
         <div className="bg-white p-4 flex flex-col gap-4 rounded-2xl">
-          <h3 className="text-xl font-bold text-black mb-2">
-            Events Details
+          <h3 className="text-2xl font-bold text-black mt-2">
+            Events Details :
           </h3>
+          <span className="font-bold py-1 px-2 bg-gradient-to-l text-white from-purple-700 to-pink-500 rounded-full w-fit">
+            {events.category}
+          </span>
           <p className="text-gray-700">
-            <strong>Ticket Price:</strong> ${events.ticket_price}
+            <strong>Date:</strong>{" "}
+            {new Date(events.date_time).toLocaleString()}
+          </p>
+          <p className="text-gray-700">
+            <strong>Ticket Price:</strong> {events.ticket_price} DIAMS
           </p>
           <p className="text-gray-700">
             <strong>Total Tickets :</strong> {events.total_tickets}
           </p>
           <p className="text-gray-700">
-            <strong>Token Name:</strong> {events.token_name}
-          </p>
-          <p className="text-gray-700">
-            <strong>Address:</strong> {events.location.address},{" "}
-            {events.location.city}, {events.location.state}
-          </p>
-          <p className="text-gray-700">
-            {/* <strong>Fraction Left:</strong> {events.no_of_tokens} / {events.total_fraction} */}
             <strong>Available Tickets : </strong> {events.available_tickets}
           </p>
           <p className="text-gray-700">
-            <strong>Owner:</strong> {events.owner.username}
+            <strong>Venue:</strong> {events.location.address},{" "}
+            {events.location.city}, {events.location.state}
+          </p>
+          <p className="text-gray-700">
+            <strong>Token Name:</strong> {events.token_name}
+          </p>
+          <p className="text-gray-700">
+            <strong>Organizer:</strong> {events.owner.username}
           </p>
           <p className="text-gray-700">
             <strong>Listed At:</strong>{" "}
@@ -97,19 +103,11 @@ const DetailsPage = ({ setProgress }) => {
         </div>
         <div className="flex justify-center p-2 gap-2">
           <Link to={`/buy/${events._id}`}>
-            <button className="text-white font-medium text-xl px-4 py-3 bg-[#7065F0] hover:bg-[#d7d4fc] hover:px-4 hover:py-3 rounded-[10px] hover:text-[#7065F0] transition-all">
+            <button className="text-white font-medium text-xl px-4 py-3 bg-[#7065F0] hover:bg-[#d7d4fc] hover:px-4 hover:py-3 rounded-[10px] bg-gradient-to-l hover:text-gray-200 from-purple-700 to-pink-500 transition-all">
               <h1>BOOK NOW</h1>
             </button>
           </Link>
-          {/* <button
-            onClick={handlePurachse}
-            className="text-white font-medium text-xl px-4 py-3 bg-[#7065F0] hover:bg-[#d7d4fc] hover:px-4 hover:py-3 rounded-[10px] hover:text-[#7065F0] transition-all"
-          >
-            <h1>BUY 100% (in DIAM)</h1>
-          </button> */}
         </div>
-
-        {/* <InvestorTable investors={events.investors} /> */}
       </div>
     </div>
   );

@@ -110,12 +110,12 @@ const ListingPage2 = () => {
 	};
 
 	return (
-		<div className='listing-container flex items-center w-full justify-center bg-b'>
+		<div className='listing-container bg-base-200 flex items-center w-full justify-center bg-b'>
 			<form onSubmit={handleSubmit} className='w-[60%]'>
 				<div className='flex gap-3'>
 					<div className='w-full'>
 						<div className='form-group'>
-							<label>Event Name 🎼</label>
+							<label classname='text-white'>Event Name 🎼</label>
 							<input
 								type='text'
 								name='title'
@@ -125,7 +125,7 @@ const ListingPage2 = () => {
 							/>
 						</div>
 						<div className='form-group'>
-							<label>Description 🧾</label>
+							<label classname='text-white'>Description 🧾</label>
 							<textarea
 								name='desc'
 								value={formData.desc}
@@ -136,7 +136,7 @@ const ListingPage2 = () => {
 					</div>
 					<div>
 						<div className='form-group'>
-							<label>Ticket Price 💰</label>
+							<label classname='text-white'>Ticket Price 💰</label>
 							<input
 								type='number'
 								name='ticket_price'
@@ -147,7 +147,7 @@ const ListingPage2 = () => {
 						</div>
 
 						<div className='form-group'>
-							<label>Category 📌</label>
+							<label classname='text-white'>Category 📌</label>
 							<select
 								name='category'
 								value={formData.category}
@@ -163,7 +163,7 @@ const ListingPage2 = () => {
 						</div>
 
 						<div className='form-group'>
-							<label>Image 🎴</label>
+							<label classname='text-white'>Image 🎴</label>
 							<input
 								type='file'
 								accept='image/*'
@@ -189,7 +189,7 @@ const ListingPage2 = () => {
 						))}
 				</div>
 				<div className='form-group'>
-					<label>Token Name (max 12 characters, alphanumeric) 🎟</label>
+					<label classname='text-white'>Token Name (max 12 characters, alphanumeric) 🎟</label>
 					<input
 						type='text'
 						name='token_name'
@@ -210,7 +210,7 @@ const ListingPage2 = () => {
 				<div className='form-group'>
 					<div className='flex w-full gap-2 items-center'>
 						<div className='w-full flex-col flex'>
-							<label>Total Tickets 🎫</label>
+							<label classname='text-white'>Total Tickets 🎫</label>
 							<input
 								type='number'
 								name='total_tickets'
@@ -220,7 +220,7 @@ const ListingPage2 = () => {
 							/>
 						</div>
 						<div className='w-full flex-col flex'>
-							<label>Date & Time 📆</label>
+							<label classname='text-white'>Date & Time 📆</label>
 							<input
 								type='datetime-local'
 								name='date_time'
@@ -233,7 +233,7 @@ const ListingPage2 = () => {
 					</div>
 				</div>
 				<div className='form-group w-full'>
-					<label>Location 🌎</label>
+					<label classname='text-white'>Location 🌎</label>
 					<div className='w-full flex gap-x-3'>
 						<input
 							type='text'

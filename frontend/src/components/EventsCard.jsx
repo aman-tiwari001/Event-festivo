@@ -20,24 +20,12 @@ function EventsCard({ events }) {
 						
 					</div>
 					<div className='w-[28%] flex justify-center items-center'>
-						{/* <div
-							className='radial-progress text-[#399e45] w-[50px] h-[50px] font-bold'
-							style={{
-								'--value': `${Math.floor((events.available_tickets / events.total_tickets) * 100)}`,
-								'--size': '12rem',
-								'--thickness': '4px',
-							}}
-							role='progressbar'
-						>
-							{Math.floor(events.available_tickets)}
-						</div> */}
 						<p className='text-white font-bold w-fit text-center p-2 rounded-lg bg-gradient-to-r border-[1px] from-purple-400 to-pink-500'>{events.ticket_price} Diams</p>
 					</div>
 				</div>
 
-				<button className='btn btn-primary  bg-gradient-to-l border-[1px] from-purple-700 to-pink-500 rounded-none text-white text-xl font-light mt-4 w-full'>Buy Now</button>
+				<button className='btn btn-primary  bg-gradient-to-l border-[1px] from-purple-700 to-pink-500 rounded-none text-white text-xl font-light mt-4 w-full'>Book Now</button>
 			</div>
-			{/* {events.title} */}
 		</Link>
 	);
 }

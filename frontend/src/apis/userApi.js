@@ -68,6 +68,7 @@ export const handlePayment = async (amount, receiverPublicKey) => {
     );
     console.log(resp.data);
     toast.success("Payment Successful");
+    return resp;
   } catch (error) {
     console.error(error);
     toast.error("Payment Failed. Please try again.");

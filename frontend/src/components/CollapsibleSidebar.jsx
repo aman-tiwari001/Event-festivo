@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BiHome } from "react-icons/bi";
+import { BiAddToQueue, BiBookAdd, BiHome, BiPlusCircle, BiSolidDashboard } from "react-icons/bi";
 import { FiMenu, FiX } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
 
@@ -32,13 +32,19 @@ const CollapsibleSidebar = () => {
                 Menu
               </h3>
               <Link to={"/"}>
-                <button className="btn-Pink w-full">Home</button>
+                <button className="btn-Pink w-full flex items-center gap-5 text-xl">
+                  <BiHome />
+                  Home</button>
               </Link>
               <Link to={"/listing"}>
-                <button className="btn-Pink w-full">List Event</button>
+                <button className="btn-Pink w-full flex items-center gap-5 text-xl">
+                  <BiPlusCircle />
+                  List Event</button>
               </Link>
               <Link to={"/dashboard"}>
-                <button className="btn-Pink w-full">DashBoard</button>
+                <button className="btn-Pink w-full flex items-center gap-5 text-xl">
+                  <BiSolidDashboard />
+                  DashBoard</button>
               </Link>
             </div>
           </div>

@@ -82,8 +82,8 @@ function SignUp({ setProgress }) {
   return (
     <div className="relative h-[100vh] w-screen flex items-center justify-center">
       {showSecretKey && (
-        <div className="text-black absolute top-[30vh] right-[30.2vw] border-2 border-black bg-white p-4 rounded-xl z-30">
-          <h1 className="text-3xl">Secret Key</h1>
+        <div className="text-white bg-black absolute top-[30vh] right-[30.2vw] border-2 border-white backdrop-blur-xl bg-transparent  p-4 rounded-xl z-30">
+          <h1 className="text-3xl my-2">Secret Key</h1>
           <p>
             {secretKey}{" "}
             <BiCopy
@@ -100,7 +100,7 @@ function SignUp({ setProgress }) {
               size={27}
             />{" "}
           </p>
-          <p>
+          <p className="my-2">
             Note: Copy and save this secret key, you will need it for next
             login!
           </p>
@@ -128,7 +128,7 @@ function SignUp({ setProgress }) {
       </video>
       <div className="absolute top-0 left-0 w-full h-full backdrop-blur-sm bg-[#00000032]"></div>
 
-      <div className="relative z-10 bg-[#0000009e] backdrop-blur-lg border-[1px] border-slate-700 p-8 rounded-lg shadow-md w-[90%] max-w-md">
+      <div className="relative z-10 bg-[#0000009e] backdrop-blur-lg border-[1px] border-slate-700 p-8 rounded-3xl shadow-md w-[90%] max-w-md">
         <h2 className="text-2xl font-bold mb-4 text-white text-center">
           Welcome to <span className="text-[#7065F0]">EventÓfestivo</span>
         </h2>

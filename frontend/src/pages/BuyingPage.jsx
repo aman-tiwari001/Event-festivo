@@ -9,7 +9,7 @@ const BuyingPage = ({ setProgress }) => {
   const { id } = useParams();
   const totalEventsPrice = 200;
   const totalTokens = 10;
-  const [ticketCount, setTicketCount] = useState(0);
+  const [ticketCount, setTicketCount] = useState('');
   const [percentage, setPercentage] = useState(0);
   const [events, setEvents] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -55,16 +55,19 @@ const BuyingPage = ({ setProgress }) => {
       setProgress(40);
       const no_of_tickets = ticketCount;
       console.log(no_of_tickets);
-      await handlePayment(ticketCount, events.owner.public_address);
+      const resp = await handlePayment(ticketCount * events.ticket_price, events.owner.public_address);
+      if(resp.status !== 200) {
+        return;
+      }
       setProgress(60);
       await purchaseEventTicket(id, no_of_tickets);
       setProgress(100);
-      toast.success("💰 Invested successfully");
+      toast.success("💰 Ticket tranferred to wallet successfully");
       setTicketCount(0);
       setPercentage(0);
       navigate("/"); 
     } catch (error) {
-      toast.error("Investment failed");
+      toast.error("Transaction failed");
       console.error(error);
       setProgress(100);
       setError(error);
@@ -94,7 +97,7 @@ const BuyingPage = ({ setProgress }) => {
             <strong>Total Ticktes:</strong> {events.total_tickets}
           </p>
           <p className="text-gray-700">
-            <strong>Ticket Price:</strong> {events.ticket_price}
+            <strong>Ticket Price:</strong> {events.ticket_price} DIAMS
           </p>
           <p className="text-gray-700">
             <strong>Available Tokens:</strong> {events.available_tickets}
@@ -105,7 +108,7 @@ const BuyingPage = ({ setProgress }) => {
           </p>
         </div>
         <div className="flex flex-col pt-3 px-1 gap-1">
-          <h3 className="text-black">Number of Tokens to Buy</h3>
+          <h3 className="text-black">Number of Tickets to Buy</h3>
           <input
             type="number"
             min="0"
@@ -115,16 +118,6 @@ const BuyingPage = ({ setProgress }) => {
             className="border-2 bg-white border-white text-slate-800 font-mono font-medium rounded-md p-2"
             placeholder="Enter number of tokens to buy"
           />
-
-          {/* <h3 className="mt-2 text-black">Events Percentage</h3>
-          <input
-            type="text"
-            value={`${percentage.toFixed(2)}%`}
-            readOnly
-            className="border bg-white border-white text-slate-800 font-mono font-medium rounded-md p-2"
-            placeholder="Percentage of events"
-          /> */}
-
           {isPurchasePossible ? (
             <button
               className="text-white mt-4 font-medium text-xl px-4 py-3 bg-[#7065F0] hover:bg-[#d7d4fc] rounded-[10px] hover:text-[#7065F0] transition-all"

@@ -73,7 +73,7 @@ function LoginPage({ setProgress }) {
 				<source src='/login_bg.mp4' type='video/mp4' />
 			</video>
 			<div className='absolute top-0 left-0 w-full h-full backdrop-blur-sm bg-[#00000032]'></div>
-			<div className='relative z-10 bg-[#0000009e] backdrop-blur-lg border-[1px] border-slate-700 p-8 rounded-lg shadow-md w-[90%] max-w-md'>
+			<div className='relative z-10 bg-[#0000009e] backdrop-blur-lg border-[1px] border-slate-700 p-8 rounded-2xl w-[90%] max-w-md'>
 				<h2 className='text-2xl font-bold mb-4 text-white text-center'>
 					Welcome to <span className='text-[#7065F0]'>EventÓfestivo</span>
 				</h2>

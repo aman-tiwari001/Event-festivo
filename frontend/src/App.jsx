@@ -1,10 +1,7 @@
 import './App.css';
-import Home from './pages/Home';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import DetailsPage from './pages/DetailsPage';
 import BuyingPage from './pages/BuyingPage';
-import ListingPage from './components/ListingPage';
-import Navbar from './components/NavBar';
 import Events from './pages/Events';
 import LoginPage from './pages/Login';
 import DashBoard from './pages/DashBoard';
