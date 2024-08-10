@@ -41,7 +41,7 @@ const listEvent = async (req, res) => {
     };
     const token = req.headers.authorization;
     const newAssetResp = await fetch(
-      'https://evento-festivo.vercel.app/api/user/create-asset',
+      'https://evento-festivo.vercel.app/user/create-asset',
       {
         method: 'POST',
         headers: {
@@ -129,7 +129,7 @@ const purchaseEventTicket = async (req, res) => {
     const user = await User.findById(req.userId);
     const access_token = req.headers.authorization;
 
-    const sendTk = await fetch('https://evento-festivo.vercel.app/api/user/send-token', {
+    const sendTk = await fetch('https://evento-festivo.vercel.app/user/send-token', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
