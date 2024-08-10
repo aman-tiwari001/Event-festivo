@@ -33,7 +33,7 @@ const handleUserSignUp = async (req, res) => {
 
     // Funding the diamante account with test diam to activat it
     const fundResp = await fetch(
-      'https://evento-festivo.vercel.app/user/fund-account',
+      'https://event-festivo.vercel.app/api/user/fund-account',
       {
         method: 'GET',
         headers: {
@@ -44,7 +44,7 @@ const handleUserSignUp = async (req, res) => {
     );
 
     // Setting userId on diamante chain for associating web2 credential with web3
-    const response = await fetch('https://evento-festivo.vercel.app/user/set-data', {
+    const response = await fetch('https://event-festivo.vercel.app/api/user/set-data', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

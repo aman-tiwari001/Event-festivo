@@ -82,7 +82,7 @@ const ListingPage2 = () => {
       }
       const token = localStorage.getItem("access_token");
       const response = await axios.post(
-        "https://evento-festivo.vercel.app/api/user/list/event",
+        "https://event-festivo.vercel.app/api/user/list/event",
         formData,
         {
           headers: {
