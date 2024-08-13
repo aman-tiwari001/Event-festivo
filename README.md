@@ -45,8 +45,8 @@ The secondary market for event tickets is plagued by scalping, inflated prices, 
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/EventOfestivo.git
-    cd EventOfestivo
+    git clone https://github.com/aman-tiwari001/Event-festivo.git
+    cd Event-festivo
     ```
 
 2. **Install dependencies for backend and frontend**:
