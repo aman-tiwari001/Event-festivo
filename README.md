@@ -1,6 +1,6 @@
 # 🎟️ EventÓfestivo
 
-**EventÓfestivo** is a blockchain-powered dApp built on the Diamante blockchain, revolutionizing the way you book tickets for events like concerts 🎸. EventÓfestivo ensures that each ticket is a unique digital asset 🛡️, securely transferred to your account upon purchase 💳.
+**EventÓfestivo** is a blockchain-powered dApp built on the Diamante blockchain, revolutionizing the way you book tickets for events like concerts🎙🎶, movies🎬, festivals🎉🎸 and sports🏃‍♂️. EventÓfestivo ensures that each ticket is a unique digital asset 🛡️, securely transferred to your account upon purchase 💳.
 
 
 ## Problem It Solves
@@ -26,6 +26,66 @@ The secondary market for event tickets is plagued by scalping, inflated prices, 
 - **Transparent Transactions**: All transactions are recorded on the Diamante blockchain, providing full transparency 🌐.
 - **Ownership of Assets**: Tickets are transferred directly to your account as digital assets, giving you full ownership 🎫.
 - **Decentralized**: No middlemen—experience true peer-to-peer ticket buying 🤝.
+
+# Application Flow
+The **EventÓfestivo** dApp provides a seamless experience for users to browse, purchase, and manage event tickets securely on the blockchain. Below is a detailed explanation of the application flow, organized according to the sequence of actions a user would typically follow:
+
+
+
+### 1. Sign Up
+Users start their journey by signing up on the platform. This involves creating an account on Diamanate Chain, and entering basic details. The sign-up process is straightforward, ensuring that users can quickly get started with exploring events.
+![Sign up](https://github.com/user-attachments/assets/ff0ed67a-af85-416d-97f3-b7ef1b746d37)
+
+
+
+### 2. Login
+After signing up, users log into their accounts using their credentials such as username and private key. Secure login protocols are in place to protect user information and provide a smooth authentication experience. Besides this users can connect their Diam Wallet.
+![Login](https://github.com/user-attachments/assets/9603e77f-d0ea-461c-870f-4e159fc73453)
+
+
+
+### 3. Home
+Upon logging in, users are directed to the home page. Here, they can view featured events, browse through different categories, apply different filters such as date, price, etc and search for specific events they are interested in.
+![Home](https://github.com/user-attachments/assets/139ffd4b-8e55-4a66-b073-dbed724ff50f)
+
+
+
+
+### 4. Event Details
+By selecting an event, users can view comprehensive details, including the event description, venue information, ticket prices, and availability. This section also allows users to proceed with purchasing tickets.
+![Event details](https://github.com/user-attachments/assets/92329e0d-a4a1-448d-a2c2-7dac958c7657)
+
+
+
+### 5. Event Listing
+Organizers can list their events on our platform by entering all the details of the event. This will mint tokens reprsenting tickets, which can be transfered to others wallet.
+![Event listing](https://github.com/user-attachments/assets/4cf6b772-cce7-4aa9-b962-7a91c199acf5)
+
+
+
+
+### 6. Bookings
+Ticket (token or asset) can be purchased by sending the DIAM Coins to the origanizer account specified by him on platform, on successful transaction the ticket (token) will be moved to user's wallet. Once tickets are purchased, users can view their bookings in this section. Each booking is displayed with all relevant details, including event type, quantity, and the total cost, etc.
+![Bookings](https://github.com/user-attachments/assets/240ddaf3-7f6b-46f4-b9c0-3371294090e2)
+
+
+
+### 7. Account Dashboard
+The account dashboard allows users to manage their profiles, view transaction history, check their ticket ownership status, view their listed events, etc
+![Account dashboard](https://github.com/user-attachments/assets/807cb9d2-eaaf-4875-b9a7-8ef001f506f1)
+
+
+
+### 8. Transaction
+This section displays a detailed record of all transactions made on the Diamante Chain using our platform, ensuring complete transparency. Users can verify their purchases and check transaction statuses.
+![Transaction](https://github.com/user-attachments/assets/4277076f-8cf1-4075-9615-b840945fd63e)
+
+
+
+### 9. Menu
+The menu provides easy navigation throughout the application. Users can access different sections like Home, Bookings, and Account Dashboard, making the app user-friendly and efficient.
+![Menu](https://github.com/user-attachments/assets/7d94d354-ddd1-48b1-bcd0-3ebd6528d474)
+
 
   
 ## Technology Stack 🔧
@@ -76,7 +136,7 @@ https://www.canva.com/design/DAGNoMXkm6M/XNiukgW0cwsfF1sVhSlIog/edit?utm_content
 
 ## 🌐 Connect with Us
 
-- Gmail: [@EventOfestivo](mailto:anshdoshi.d16@gmail.com)
+- Gmail: [@EventOfestivo](mailto:amananjalitiwari2007@gmail.com)
 ---
 
 🎉 Thank you for checking out **EventÓfestivo**! We hope you enjoy a seamless and secure event ticketing experience! 🎟️
